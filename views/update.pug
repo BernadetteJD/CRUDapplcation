@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    div.container
+        div.row
+            form(action='/update' method='POST')
+                fieldset
+                    legend Update Node
+                        input(type="hidden", name="_id" value=data._id)
+                        div.form-group
+                            label Node Name
+                            input(type="text" class="form-control" name="nodeName" placeholder="Node Name" required value=data.nodeName)
+                        div.form-group
+                            label Description
+                            textarea(name="description" class="form-control" placeholder="Node Description")=data.description
+                        div.form-group
+                            label Parent
+                            input(type="number" class="form-control" name="parent" placehoder="Parent" required value=data.parent)
+                        div.form-group
+                            label Read Only
+                            input(type="number" class="form-control" name="readOnly" placehoder="Read Only" required value=data.readOnly)
+                        div.form-group
+                            button.btn.btn-primary.btn-lg(type="submit") Update Node

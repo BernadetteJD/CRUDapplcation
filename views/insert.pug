@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    div.container
+        div.row
+            form(action='/insert' method='POST')
+                fieldset
+                    legend Add Node
+                        div.form-group
+                            label Node Name
+                            input(type="text" class="form-control" name="nodeName" placeholder="Node Name" required)
+                        div.form-group
+                            label Description
+                            textarea(name="description" class="form-control" placeholder="Node Description")
+                        div.form-group
+                            label Parent
+                            input(type="number" class="form-control" name="parent" placehoder="Parent" required)
+                        div.form-group
+                            label Read Only
+                            input(type="number" class="form-control" name="readOnly" placehoder="Read Only" required)
+                        div.form-group
+                            button.btn.btn-primary.btn-lg(type="submit") Add Node 
+                            a.btn.btn-info.btn-lg(href= '/') Cancel
