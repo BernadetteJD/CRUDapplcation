@@ -17,10 +17,16 @@ block content
                     tr
                         td=item.nodeName
                         td=item.description
-                        td=item.parent
-                        td=item.readOnly
                         td
-                            a.btn.btn-info(href= '/update/' + item._id) Edit 
-                        td 
-                            a.btn.btn-info(href= '/delete/' + item._id onclick="return confirm('Are you sure to delete this record ?'); ") Delete 
-            
+                            a(href ='/parent')=item.parent 
+                        td=item.readOnly
+                        if item.readOnly === 0
+                            td
+                                a.btn.btn-info(href= '/update/' + item._id) Edit 
+                            td 
+                                a.btn.btn-info(href= '/delete/' + item._id onclick="return confirm('Are you sure to delete this record ?'); ") Delete 
+                        else
+                            td 
+                                a.btn.btn-info.disabled(href= '/update/' + item._id) Edit 
+                            td
+                                a.btn.btn-info.disabled(href= '/delete/' + item._id onclick="return confirm('Are you sure to delete this record ?'); ") Delete 

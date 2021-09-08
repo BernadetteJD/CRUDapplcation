@@ -30,6 +30,20 @@ router.get('/list', function(req,res){
   });
 });
 
+router.get('/parent', function(req,res){
+  let parent = req.params.id;
+  Data.find({parent: parent}, (err, docs)=>{
+    if(!err){
+      res.render('parent', {
+        list: docs
+      });
+    }
+    else{
+      console.log('Error in retrieving node list' + err);
+    }
+  });
+});
+
 router.get('/update/:id', (req, res) => {
   Data.findById(req.params.id, (err, doc) =>{
       if(!err){
@@ -37,6 +51,8 @@ router.get('/update/:id', (req, res) => {
       }
   });   
 });
+
+
 
 router.post('/update', (req, res)=>{
   updateProduct(req,res);
